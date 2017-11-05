@@ -7,7 +7,7 @@ defineSupportCode(function ({Before, After}) {
         //client.manage().addCookie("noWelcomePopup", "12387");
     });
 
-    // After(function (scenario) {
-    //     return client.end();
-    // });
+    After(function (scenario) {
+        return client.end();
+    });
 });
