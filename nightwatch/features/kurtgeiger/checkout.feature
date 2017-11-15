@@ -13,4 +13,4 @@ Feature: As a user
     And I add the product to the bag
    Then I should go to 'My Bag' and assert bag quantity
     And I click 'Proceed to checkout'
-    And I should be on checkout page
+    #And I should be on checkout page
