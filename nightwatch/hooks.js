@@ -3,8 +3,13 @@ const {client} = require('nightwatch-cucumber');
 
 defineSupportCode(function ({Before, After}) {
     Before(function (scenario) {
-        return client.init()
-        //client.manage().addCookie("noWelcomePopup", "12387");
+        client
+        .init()
+        .setCookie({
+        	name : "noWelcomePopup",
+        	value : "12387",})
+        client.init();
+
     });
 
     After(function (scenario) {
