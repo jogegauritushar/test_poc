@@ -12,7 +12,7 @@ defineSupportCode(function ({Before, After}) {
 
     });
 
-    After(function (scenario) {
+    /*After(function (scenario) {
         return client.end();
-    });
+    });*/
 });
