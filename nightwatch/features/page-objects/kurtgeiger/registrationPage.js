@@ -1,6 +1,9 @@
+
+
 module.exports = {
+
     elements: {
-        title: {selector: "div.input-box select[id='prefix'] option[value='Ms']", locateStrategy: 'css'},
+        title: {selector: "//div[@class='input-box']/select[@id='prefix']/option[5]", locateStrategy: 'xpath'},
         firstName: {selector: "input[id='firstname']", locateStrategy: 'css'},
         lastName: {selector: "input[id='lastname']", locateStrategy: 'css'},
         email: {selector: "input[id='email_address']", locateStrategy: 'css'},
@@ -12,24 +15,34 @@ module.exports = {
         },
     commands: [
     {
-        userRegisteration: function(title, firstName, lastName, email, country, password, confirmPassword){
-            return this
+        userRegistration: function(){
+            var email = 'random-user' + new Date().getTime() + '@mailinator.com'
             
-            //.waitForElementPresent('@title', 2000)
-            //.click('@title', title)
-            //.click('@title', title)
+            this
+            .waitForElementPresent('@title', 2000)
+            .click('@title')
             .setValue('@firstName', 'Ana')
-            .setValue('@lastName', Switch)
-            //.setValue('@email', testtester@test.com)
-            .setValue('@country', UK)
-            .setValue('@password', password)
-            .setValue('@confirmPassword', password);
+            .setValue('@lastName', 'A')
+            .setValue('@email',email)
+            .click('@country')
+            .setValue('@password', 'password')
+            .setValue('@confirmPassword', 'password')
+            return this;
+        },
+
+        submit: function(){
+             this
+             .waitForElementVisible('@submitButton', 2000)
+             .click('@submitButton')
+             return this;
 
         },
 
         continueShopping: function(){
-            this.waitForElementVisible('@continueShoppingBtn', 2000)
-            return this.click('@continueShoppingBtn');
+            this
+            .waitForElementVisible('@continueShoppingBtn', 2000)
+            .click('@continueShoppingBtn')
+            return this;
         }
 
     }]
