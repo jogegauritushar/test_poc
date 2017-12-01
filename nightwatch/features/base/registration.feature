@@ -5,7 +5,7 @@ Feature: In order to shop online
   Background:
     Given I am on the homepage
     
-   @register 
+  @register  
   Scenario: User Registration with valid credentials
     When I click 'Sigh In' tab
     And I should be able on login account page
@@ -14,3 +14,4 @@ Feature: In order to shop online
     And I enter all the required registration details
     Then I hit 'Submit'
     And I should be directed to 'My Account' section
+    #And I 'Log out'
