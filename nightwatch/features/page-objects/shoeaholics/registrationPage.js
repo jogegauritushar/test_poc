@@ -1,45 +1,43 @@
+
 module.exports = {
     elements: {
-        title: {selector: "div.input-box select[id='prefix']", locateStrategy: 'css'},
-        titleValue: {selector: "div.input-box select[id='prefix'] option[value = 'Ms']", locateStrategy: 'css'},
+        title: {selector: "//div[@class='input-box']/select[@id='prefix']/option[5]", locateStrategy: 'xpath'},
         firstName: {selector: "input[id='firstname']", locateStrategy: 'css'},
         lastName: {selector: "input[id='lastname']", locateStrategy: 'css'},
         email: {selector: "input[id='email_address']", locateStrategy: 'css'},
         confirmEmail: {selector: "input[id='confirm_email_address']", locateStrategy: 'css'},
-        country: {selector: "select[id='country']", locateStrategy: 'css'},
-        mobile: {selector: "input[id='contact_number']", locateStrategy: 'css'}
+        country: {selector: "//select[@id='country']/optgroup[1]/option[2]", locateStrategy: 'xpath'},
+        mobile: {selector: "input[id='contact_number']", locateStrategy: 'css'},
         password: {selector: "input[id='password']", locateStrategy: 'css'},
         confirmPassword: {selector: "input[id='confirmation']", locateStrategy: 'css'},
-        recaptcha: {selector: "div.recaptcha-checkbox-checkmark", locateStrategy: 'css'},
         registerMeButton: {selector: "button#btn-register", locateStrategy: 'css'}
 
         },
     commands: [
-    {
-        userRegisteration: function(){
-            return this
-            
-            .waitForElementVisible('@title', 2000)
-            .click('@title')
-            .click('@titleValue', 'Ms')
-            .setValue('@firstName', 'Ana')
-            .setValue('@lastName', 'A')
-            .setValue('@email', 'anaa@test.com')
-            .setValue('@country', 'UK')
-            .setValue('@mobile', '0123456789')
-            .setValue('@password', 'password')
-            .setValue('@confirmPassword', 'password')
-            .waitForElementVisible('@recaptcha', 2000)
-            .click('@recaptcha')
-            .waitForElementVisible('@registerMeButton', 2000)
-            .click('@registerMeButton');
+        {
+            userRegistration: function(){
 
-        },
+                var email = 'random-user' + new Date().getTime() + '@mailinator.com'
+                
+                this
+                 .waitForElementVisible('@title', 2000)
+                 .click('@title')
+                 .setValue('@firstName', 'xyz')
+                 .setValue('@lastName', 'abcd')
+                 .setValue('@email', email)
+                 .setValue('@confirmEmail', email)
+                 .click('@country')
+                 .setValue('@mobile', '1283847575')
+                 .setValue('@password', 'password')
+                 .setValue('@confirmPassword', 'password')
+                 return this;
+            },
 
-        continueShopping: function(){
-            this.waitForElementVisible('@continueShoppingBtn', 2000)
-            return this.click('@continueShoppingBtn');
-        }
-
-    }]
+            submit: function(){
+                this
+                 .waitForElementVisible('@registerMeButton', 2000)
+                 .click('@registerMeButton')
+                 return this;
+            }
+        }]
 };
