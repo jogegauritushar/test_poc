@@ -6,9 +6,10 @@ module.exports = {
 	commands: [
 	{
 		selectProduct: function(){
-			 return this
+			this
 			.waitForElementVisible('@product', 2000)
-			.click('@product');
-		},
+			.click('@product')
+			return this;
+		}
 	}]
 };
