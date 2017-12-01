@@ -9,9 +9,10 @@ module.exports = {
 
 	{	
 		register: function(){
-			 return this
+			this
 			.waitForElementVisible('@registerButton', 2000)
-			.click('@registerButton');
+			.click('@registerButton')
+			return this;
 		},
 	}]
 };
