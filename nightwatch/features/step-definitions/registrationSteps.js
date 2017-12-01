@@ -18,46 +18,50 @@ defineSupportCode(({Given, Then, When, Before, After}) =>
     if (launchUrl.search('kurtgeiger') !== -1) {
         hp = client.page.kurtgeiger.homePage();
         lap = client.page.kurtgeiger.loginAccountPage();
-        rp = client.page.shoeaholics.registrationPage();
+        rp = client.page.kurtgeiger.registrationPage();
         
     }
     
     When(/^I click 'Sigh In' tab$/, function () {
-         console.log('dhfgrgfgfd-----');
-         client.pause(1000);
-        return hp.signIn();               
+         return hp.signIn();               
    });
 
 
     When(/^I should be able on login account page$/, function () {
-        console.log('dhfgrgfgfd-----');
-        return client.assert.urlContains('login');
+         //client.waitForElementVisible('login', 2000)
+         return client.assert.urlContains('login');
     });
 
 
     When(/^I click on 'Register'$/, function () {
-        console.log('dhfgrgfgfd-----');
         return lap.register();
     });
 
 
-    Then(/^I should be navigated to account registeration page$/, function () {
+
+    Then(/^I should be navigated to account registration page$/, function () {
         console.log('dhfgrgfgfd-----');
-        return client.assert.containsText('create');
+         //client.waitForElementVisible('create', 2000)
+        return client.assert.urlContains('create');
 
     });
 
     Then(/^I enter all the required registration details$/, function () {
-        console.log('dhfgrgfgfd-----');
-         rp.userRegisteration();
-         return client.pause(2000);
+        return rp.userRegistration();
+         
     });
 
     Then(/^I hit 'Submit'$/, function () {
+        return rp.submit();
 
     });
 
     Then(/^I should be directed to 'My Account' section$/, function () {
+
+        return client.assert.urlContains('account');
+    });  
+
+    Then(/^I 'Log out'$/, function () {  
 
     });    
     
