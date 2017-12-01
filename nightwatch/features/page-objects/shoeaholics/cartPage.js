@@ -6,8 +6,9 @@ module.exports = {
 	{
 		proceedToCheckout: function(){
 			this
-			.waitForElementVisible('@checkoutButton', 2000)
+			.waitForElementVisible('@checkoutButton', 4000)
 			.click('@checkoutButton')
+			return this;
 
 		},
 
