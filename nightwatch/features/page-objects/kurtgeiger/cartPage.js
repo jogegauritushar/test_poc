@@ -9,12 +9,15 @@ module.exports = {
 			this
 			.waitForElementVisible('@checkoutButton', 2000)
 			.click('@checkoutButton')
+			return this;
 
 		},
 
 		continueShopping: function(){
-			this.waitForElementVisible('@continueShoppingBtn', 2000)
-			return this.click('@continueShoppingBtn');
+			this
+			.waitForElementVisible('@continueShoppingBtn', 2000)
+			.click('@continueShoppingBtn')
+			return this;
 		},
 
 	}]
