@@ -14,16 +14,21 @@ module.exports = {
 			.waitForElementVisible('@colour', 2000)
 			.click('@colour')
 			.waitForElementVisible('@size', 2000)
-			return this.click('@size');
+			.click('@size')
+			return this;
 		},
 		addToBag: function(){
-			this.waitForElementVisible('@bag', 2000)
-			return this.click('@bag');
+			this
+			.waitForElementVisible('@bag', 2000)
+			.click('@bag')
+			return this;
 		},
 
 		checkMyBag: function(){
-			this.waitForElementVisible('@myBag', 2000)
-			return this.click('@myBag');
+			this
+			.waitForElementVisible('@myBag', 2000)
+			.click('@myBag')
+			return this;
 		}
 
 	}]
