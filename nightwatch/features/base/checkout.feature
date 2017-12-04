@@ -11,7 +11,7 @@ Feature: As a user
     And I select any colour and size
     And I add the product to the bag
    Then I should go to 'My Bag' and assert bag quantity
-   When I click 'Proceed to Checkout'
+   When I click 'Checkout Securely'
    #Then I should be on Registeration page
 
    

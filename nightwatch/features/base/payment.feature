@@ -20,15 +20,21 @@ Scenario Outline: Visa 3D Secure payment
     Then I should be on the payment summary page
     And I select to pay by card
     #And I select the <Credit Card>
-    And I enter valid <"Payment Details">
-    #And I provide the 3D secure password
-    #And I click 'Submit'
+    And I enter valid <Payment Details>
+    And I provide the 3D secure password
+    And I click 'Submit'
+    #Then "Order Confirmation" message appears on screen
+
 
     Examples:
     |Payment Details      |
     |4929 0000 0000 6     |
     |5404 0000 0000 0001  |
-    |4462 0000 0000 0003  |
-    |4917 3000 0000 0008  |
-    |5573 4700 0000 0001  |
-    |6759 0000 0000 5     |
+#    |4462 0000 0000 0003  |
+#    |4917 3000 0000 0008  |
+#    |5573 4700 0000 0001  |
+#    |6759 0000 0000 5     |
+
+
+
+

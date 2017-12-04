@@ -11,7 +11,7 @@ module.exports = {
         addressSelectDropdown: {selector: "select[id='addressselect'] option[value='EC1M 5UA1004']", locateStrategy: 'css'},
         mobile: {selector: "input[id='billing:telephone']", locateStrategy: 'css'},
         continuePayBtn: {selector: "button#billing-buttons-container-continue", locateStrategy: 'css'},
-        deliveryOption: {selector: "//span[text() = 'Standard Delivery']", locateStrategy: 'xpath'},
+        deliveryOption: {selector: "//div[@class='method-container']/span[text()='Standard Delivery']", locateStrategy: 'xpath'},
         continueBtn: {selector: "button#shipping-method-button", locateStrategy: 'css'},
         payByCardBtn: {selector: "label#p_method_sagepayserver_label", locateStrategy: 'css'}
 	},
@@ -38,9 +38,9 @@ module.exports = {
             .setValue('@email', email)
             .click('@country')
             .setValue('@postcode', 'EC1M 5UA')
-            .waitForElementVisible('@addressLookupBtn', 2000)
+            .waitForElementVisible('@addressLookupBtn', 3000)
             .click('@addressLookupBtn')
-            .waitForElementVisible('@addressSelectDropdown', 2000)
+            .waitForElementVisible('@addressSelectDropdown', 3000)
             .click('@addressSelectDropdown')
             .setValue('@mobile', '435436758465')
             return this;
@@ -61,7 +61,7 @@ module.exports = {
 
 		payByCard: function(){
 			this
-			.waitForElementVisible('@payByCardBtn', 2000)
+			.waitForElementVisible('@payByCardBtn', 4000)
 			.click('@payByCardBtn')
 			return this;
 		}

@@ -9,7 +9,8 @@ module.exports = {
         country: {selector: "select[id='country']", locateStrategy: 'css'},
         postcode: {selector: "input[id='addressfinder:shipping']", locateStrategy: 'css'},
         addressLookupBtn: {selector: "button[id='addressfinderShippingButton']", locateStrategy: 'css'},
-        addressSelectDropdown: {selector: "select[id='addressselect'] option[value='EC1M 5UA1004']", locateStrategy: 'css'}, 
+        addressSelectDropdown: {selector: "select[id='addressselect'] option[value='EC1M 5UA1004']", locateStrategy: 'css'},
+        payByCardBtn: {selector: "label#p_method_sagepayserver_label", locateStrategy: 'css'},
         continuePayBtn: {selector: "button[title='Continue to Payment'] span span", locateStrategy: 'css'}
 	},
 	
@@ -48,7 +49,13 @@ module.exports = {
 			 this.waitForElementVisible('@continuePayBtn', 2000)
 				 .click('@continuePayBtn');
 				 return this;
-		}
+		},
+        payByCard: function(){
+            this
+                .waitForElementVisible('@payByCardBtn', 4000)
+                .click('@payByCardBtn')
+            return this;
+        }
 
 	}]
 };
