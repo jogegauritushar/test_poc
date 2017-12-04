@@ -32,16 +32,28 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
 
 
     Then(/^I select to pay by card$/, function () {
-         client.pause('2000');
          return chp.payByCard()
          
     });
 
-    Then(/^I enter valid <"Payment Details">$/, function () {
-         return cpp.cardDetails();
+    Then(/^I enter valid (.*)$/, function (card) {
+
+        client
+             .pause(2000)
+             .frame('sagepaysuite-server-incheckout-iframe');
+             return cpp
+             .cardDetails(card);
+    });
+
+    Then(/^I provide the 3D secure password$/, function () {
+        return cpp.securityCheck()
+
+    });
+    Then(/^I click 'Submit'$/, function () {
+        return cpp.submit()
+
     });
 
 
-    
 
 })

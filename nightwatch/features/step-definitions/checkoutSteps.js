@@ -50,6 +50,7 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
     Then(/^I click 'Proceed to Checkout'$/, function () {
         return cp.proceedToCheckout();
     });
+
     When(/^I should be on Registeration page$/, function () {
 
         client.assert.urlContains('checkout')
