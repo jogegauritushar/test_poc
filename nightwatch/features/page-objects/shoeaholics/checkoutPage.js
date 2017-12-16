@@ -10,10 +10,11 @@ module.exports = {
         addressLookupBtn: {selector: "button[id='addressfinderBillingButton']", locateStrategy: 'css'},
         addressSelectDropdown: {selector: "select[id='addressselect'] option[value='EC1M 5UA1004']", locateStrategy: 'css'},
         mobile: {selector: "input[id='billing:telephone']", locateStrategy: 'css'},
-        continuePayBtn: {selector: "button#billing-buttons-container-continue", locateStrategy: 'css'},
+        continuePayBtn: {selector: "button[id^='shipping-buttons']", locateStrategy: 'css'},
         deliveryOption: {selector: "//div[@class='method-container']/span[text()='Standard Delivery']", locateStrategy: 'xpath'},
         continueBtn: {selector: "button#shipping-method-button", locateStrategy: 'css'},
-        payByCardBtn: {selector: "label#p_method_sagepayserver_label", locateStrategy: 'css'}
+        payByCardBtn: {selector: "label#p_method_sagepayserver_label", locateStrategy: 'css'},
+        diffDeliveryAddress: {selector: '//*[@id="co-billing-form"]/fieldset/ul/li[3]/label', locateStrategy: 'xpath'}
 	},
 	
 	commands: [
@@ -22,13 +23,13 @@ module.exports = {
 
 			this
 			 .waitForElementVisible('@guestContinueTab', 2000)
-			 .click('@guestContinueTab')
+			 .click('@guestContinueTab');
 			 return this;	
 		},
 
 		guestUserDetails: function(){
 
-			var email = 'random-user' + new Date().getTime() + '@mailinator.com'
+			var email = 'random-user' + new Date().getTime() + '@mailinator.com';
 
 			this
 			.waitForElementVisible('@title', 2000)
@@ -42,7 +43,7 @@ module.exports = {
             .click('@addressLookupBtn')
             .waitForElementVisible('@addressSelectDropdown', 3000)
             .click('@addressSelectDropdown')
-            .setValue('@mobile', '435436758465')
+            .setValue('@mobile', '435436758465');
             return this;
             
 		},
@@ -51,21 +52,30 @@ module.exports = {
 
 			 this
 			 .waitForElementVisible('@continuePayBtn', 2000)
-			 .click('@continuePayBtn')
+             .click('@continuePayBtn')
 			 .waitForElementVisible('@deliveryOption', 5000)
 			 .click('@deliveryOption')
 			 .waitForElementVisible('@continueBtn', 2000)
-			 .click('@continueBtn')
+			 .click('@continueBtn');
 			 return this;
 		},
 
 		payByCard: function(){
 			this
 			.waitForElementVisible('@payByCardBtn', 4000)
-			.click('@payByCardBtn')
+			.click('@payByCardBtn');
 			return this;
-		}
+		},
+
+        diffAddress: function () {
+            this
+                .waitForElementVisible('@diffDeliveryAddress', 2000)
+                .click('@diffDeliveryAddress');
+            return this;
+
+        },
 
 
-	}]
+
+    }]
 };

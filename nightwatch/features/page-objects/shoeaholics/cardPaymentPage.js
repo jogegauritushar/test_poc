@@ -9,7 +9,7 @@ module.exports = {
         cvcCode: {selector: "input[name='securitycode']", locateStrategy: 'css'},
         confirmCardDetails: {selector: "div.text-align--right button", locateStrategy: 'css'},
         threeDSecure: {selector: "input[name='password", locateStrategy: 'css'},
-        submitBtn: {selector: "input#submit-button"}
+        submitBtn: {selector: "table td input#submit-button"}
 
 			},
 	commands: [
@@ -43,7 +43,7 @@ module.exports = {
 
             submit: function () {
 		    this
-                .waitForElementVisible('@submitBtn', 2000)
+                .waitForElementVisible('@submitBtn', 4000)
                 .click('@submitBtn');
                 return this;
             }
