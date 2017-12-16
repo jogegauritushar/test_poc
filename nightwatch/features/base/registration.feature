@@ -1,4 +1,4 @@
-Feature: In order to shop online
+Feature: Registration -> In order to shop online
   As a user I should be able to register an account 
 
 
