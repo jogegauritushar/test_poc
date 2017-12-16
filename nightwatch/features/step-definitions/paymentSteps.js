@@ -38,22 +38,39 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
 
     Then(/^I enter valid (.*)$/, function (card) {
 
-        client
-             .pause(2000)
-             .frame('sagepaysuite-server-incheckout-iframe');
-             return cpp
-             .cardDetails(card);
+            client
+                .pause(4000)
+             .frame("sagepaysuite-server-incheckout-iframe");
+              return cpp.cardDetails(card);
     });
 
     Then(/^I provide the 3D secure password$/, function () {
-        return cpp.securityCheck()
+         return cpp.securityCheck();
 
     });
     Then(/^I click 'Submit'$/, function () {
+        client.pause(2000);
         return cpp.submit()
 
     });
+    Then('Order Confirmation message appears on screen', function () {
+        client.pause(10000);
+        //client.assert.containsText('#body', "Order Confirmation")
+        // var SIGNATURE = The order number is; // this method is defined elsewhere
+        // client.getValue('div.order-number h4', function(result){
+        //     require("assert").equal(result.value, SIGNATURE, "Verify signature set");
+        // });
+        client.getText('div.order-number h4',function(result){
+            console.log('Order Confirmation number is'+ result.value);
+        });
+    });
+    Then(/^I enter invalid (.*)$/, function (card) {
+
+        client
+            .pause(4000)
+            .frame("sagepaysuite-server-incheckout-iframe");
+        return cpp.cardDetails(card);
+    });
 
 
-
-})
+});

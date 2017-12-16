@@ -15,17 +15,32 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
     }
 
     When(/^I search for a random (.*)$/, function (item) {
-        client.pause(2000);
-        return hp.searchField(item)
+        // client.pause(2000);
+        return hp.searchField(client, item)
 
     });
     Then(/^the product listing page should display a list of products$/, function () {
 
-        var itemName = hp.searchField();
-        console.log("The text is :"+itemName);
+        var getText =  client.getTitle();
+        console.log(getText)
+        // this.click('@selectItem');
+        // /*this.getText('@selectItem', function (present) {
+        //     if (present.status !== -1) {
+        //         this.getText('@selectItem', function (result) {
+        //             if (result.status !== -1) {
+        //                 console.log('text: ' + result.text);
+        //             }
+        //         });
+        //     }
+        // });*/
+        // return this;
+   // },
 
-        /*client.assert.containsText('body', text);
-        console.log(text)*/
+    // var itemName = hp.searchField();
+        // // console.log("The text is :"+itemName);
+        //
+        // return hp.searchField().assert.containsText('body', text);
+        // console.log(text)
     });
 
 });

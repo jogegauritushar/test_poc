@@ -9,6 +9,7 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
     let pdp = null;
     let cp = null;
     let chp = null;
+    let ap = null;
 
     if (launchUrl.search('shoeaholics') !== -1) {
         hp = client.page.shoeaholics.homePage();
@@ -16,6 +17,7 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
         pdp = client.page.shoeaholics.pdpPage();
         cp = client.page.shoeaholics.cartPage();
         chp = client.page.shoeaholics.checkoutPage();
+        ap = client.page.shoeaholics.addressPage();
 
     }
 
@@ -25,15 +27,12 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
         pdp = client.page.kurtgeiger.pdpPage();
         cp = client.page.kurtgeiger.cartPage();
         chp = client.page.kurtgeiger.checkoutPage();
+        ap = client.page.kurtgeiger.addressPage();
     }
 
     Given('I can see the bag with single item', function () {
         return  pdp.checkMyBag();
     });
-
-    /*Then(/^I click 'Proceed to checkout'$/, function () {
-        return cp.proceedToCheckout();
-    });*/
     
     When(/^I should be on checkout page$/, function () {
 
@@ -50,13 +49,28 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
     });
      
     Then(/^I click 'Continue to Payment'$/, function () {
-         client.pause(5000)
+         client.pause(2000);
          return chp.continuePayment();
     });
 
     Then(/^I should be on the payment summary page$/, function () {
-         return client.assert.urlContains('checkout')
+         client.assert.urlContains('checkout')
     });
-    
+
+    Then('I select the option for different billing address', function () {
+        return chp.diffAddress();
+    });
+
+    Then('I enter different billing details', function () {
+        client.pause(2000);
+        return ap.diffAddressDetails();
+    });
+
+    Then('I should be able to see different billing and delivery address', function () {
+       client.pause(2000);
+        client.assert.containsText('quote-data billing-address', '4 Dunedin Road');
+        console.log('Dunedin Road')
+
+    });
 
 })
