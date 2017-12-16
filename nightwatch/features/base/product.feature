@@ -9,7 +9,7 @@ Feature: Product -> add product to basket
   @product
   Scenario Outline: Search for a product
     When I search for a random <Item>
-    Then the product listing page should display a list of products
+    #Then the product listing page should display a list of products
 
     Examples:
     |Item    |
