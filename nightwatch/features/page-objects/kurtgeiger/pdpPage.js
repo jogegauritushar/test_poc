@@ -10,23 +10,31 @@ module.exports = {
 	{
 		selectColourAndSize: function(){
 			this
-			.waitForElementVisible('@colour', 10000)
-			.click('@colour')
-			.waitForElementVisible('@size', 2000)
-			.click('@size')
-			return this;
+				.waitForElementVisible('@colour', 4000)
+				.click('@colour')
+				.waitForElementVisible('@size', 2000)
+                .click('@size');
+
+				return this;
+            // if(this.waitForElementVisible('@size', 2000)){
+            //     this.click('@size');
+            // }
+            // else if(this.waitForElementNotVisible('@size', 2000)){
+            //     console.log('sgfhvds ghdffghe')
+            // }else
+            //     return this;
 		},
 		addToBag: function(){
 			this
 			.waitForElementVisible('@bag', 2000)
-			.click('@bag')
+			.click('@bag');
 			return this;
 		},
 
 		checkMyBag: function(){
 			this
 			.waitForElementVisible('@myBag', 2000)
-			.click('@myBag')
+			.click('@myBag');
 			return this;
 
 		}

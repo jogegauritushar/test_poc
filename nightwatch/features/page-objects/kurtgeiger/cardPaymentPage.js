@@ -9,7 +9,7 @@ module.exports = {
         cvcCode: {selector: "input[name='securitycode']", locateStrategy: 'css'},
         confirmCardDetails: {selector: "div.text-align--right button", locateStrategy: 'css'},
         threeDSecure: {selector: "input[name='password']", locateStrategy: 'css'},
-        submitBtn: {selector: "button[class^='btn btn--positive']", locateStrategy: 'css'}
+        submitBtn: {selector: "table td input#submit-button", locateStrategy: 'css'}
 
     },
     commands: [
@@ -25,22 +25,22 @@ module.exports = {
                     .waitForElementVisible('@expiryYr', 2000)
                     .setValue('@expiryYr', '18')
                     .waitForElementVisible('@cvcCode', 2000)
-                    .setValue('@cvcCode', '123');
-                    /*.waitForElementVisible('@confirmCardDetails', 2000)
-                    .click('@confirmCardDetails');*/
+                    .setValue('@cvcCode', '123')
+                    .waitForElementVisible('@confirmCardDetails', 2000)
+                    .click('@confirmCardDetails');
                      //.api.frame(null);
                 return this;
             },
-            /*securityCheck: function () {
+            securityCheck: function () {
                 this
                     .waitForElementVisible('@threeDSecure', 2000)
                     .setValue('@threeDSecure', 'password');
                 return this;
-            },*/
+            },
 
             submit: function () {
                 this
-                    .waitForElementVisible('@submitBtn', 5000)
+                    .waitForElementVisible('@submitBtn', 2000)
                     .click('@submitBtn');
                 return this;
             },

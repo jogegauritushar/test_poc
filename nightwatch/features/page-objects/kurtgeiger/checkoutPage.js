@@ -11,7 +11,8 @@ module.exports = {
         addressLookupBtn: {selector: "button[id='addressfinderShippingButton']", locateStrategy: 'css'},
         addressSelectDropdown: {selector: "select[id='addressselect'] option[value='EC1M 5UA1004']", locateStrategy: 'css'},
         payByCardBtn: {selector: "label#p_method_sagepayserver_label", locateStrategy: 'css'},
-        continuePayBtn: {selector: "button[title='Continue to Payment'] span span", locateStrategy: 'css'}
+        continuePayBtn: {selector: "button[title='Continue to Payment'] span span", locateStrategy: 'css'},
+        diffDeliveryAddress: {selector: '//*[@id="co-shipping-form"]/div/div[1]/ul/li[4]/label', locateStrategy: 'xpath'}
 	},
 	
 	commands: [
@@ -53,9 +54,18 @@ module.exports = {
         payByCard: function(){
             this
                 .waitForElementVisible('@payByCardBtn', 4000)
-                .click('@payByCardBtn')
+                .click('@payByCardBtn');
             return this;
-        }
+        },
+
+		diffAddress: function () {
+        	this
+				.waitForElementVisible('@diffDeliveryAddress', 2000)
+				.click('@diffDeliveryAddress');
+			return this;
+
+        },
+
 
 	}]
 };

@@ -8,7 +8,7 @@ module.exports = {
 		selectProduct: function(){
 			this
 			.waitForElementVisible('@product', 2000)
-			.click('@product')
+			.click('@product');
 			return this;
 		},
 	}]
