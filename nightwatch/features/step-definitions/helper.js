@@ -8,12 +8,12 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
             .waitForElementVisible('body', 10000);
     });
 
-    Given(/^I am on the "([^"]*)" homepage$/, (homepage) => {
+    /*Given(/^I am on the "([^"]*)" homepage$/, (homepage) => {
         client.maximizeWindow();
         return client
             .waitForElementVisible('body', 1000)
             .assert.containsText('body', homepage);
-    });
+    });*/
 
     When(/^I click "([^"]*)"$/, (title) => {
         return client.click(`button[title="${title}"]`);

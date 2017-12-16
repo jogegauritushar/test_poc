@@ -31,8 +31,8 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
     });
 
     Given(/^I am on PDP$/, function () {
-          hp.chooseHeaderCategory()
-            return plp.selectProduct()
+          hp.chooseHeaderCategory();
+            return plp.selectProduct();
     });
 
     When(/^I select any colour and size$/, function () {
@@ -48,7 +48,9 @@ defineSupportCode(({Given, Then, When, Before, After}) => {
     });
 
     Then(/^I click 'Proceed to Checkout'$/, function () {
+        client.pause(2000);
         return cp.proceedToCheckout();
+
     });
 
     When(/^I should be on Registeration page$/, function () {
